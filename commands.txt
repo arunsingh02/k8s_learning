@@ -1,0 +1,49 @@
+# command 
+# Arun Singh
+
+1. kubectl create -f firstpod.yml --dry-run=client
+   >> --dry-run=client  # for test before run the command
+   >> create is Imperative object command
+   >> run "kubectl edit pod <pod-name>" command and update the opende yaml file to update the resource.
+
+2. kubectl explain pod
+   >> Get the reqiured field info
+
+3. kubectl explain pod --recursicve | less
+   >> Get the yaml help tool
+
+4. kubectl run mysecondpod --dry-run=client --image=coolgourav147/nginx-custom -o yaml > secondpod.yml
+   >> Generate auto yaml file
+   >> Imperative command, means directly update the resource (run, expose, autoscale)
+
+5. kubectl apply -f firstpod.yml
+   >> apply will also create and give the required resource to your job (Declarative obect configuration)
+   >> open yaml file edit and run aagain the apply command to update the running resource
+
+6. kubectl get pods -o wide -w
+   >> -o wide will give the IP details
+   >> -w for watch
+
+7. kubectl get pods --show-labels
+   >> --show-lables will give the labels details
+
+8. kubectl edit pod <pod-name>
+   >> running pod edit command (it will open the yaml file to update)
+
+9. kubectl apply -f firstpod.yml --server-side=false
+   >> Check the server side output (without run the job)
+
+10. kubectl exec myfirstpod -c containername -- date
+    >> use -- before command
+    >> kubectl exec myfirstpod -c containername -it -- bash
+
+11. minikube dashboard
+    >> Open the GUI
+
+12. kubectl exec mysecondpod -c firstcontainer -- bash
+    >> netstat -nltp
+    >> netcat -l -p 8000
+    >> telnet localhost 8000
+    >> ifconfig
+    >> Listing the same port
+    >> Within the pod all running containers will share the same shared network.Set the any port and communicate the containers to each other.   
