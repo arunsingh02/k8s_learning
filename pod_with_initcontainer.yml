@@ -1,0 +1,29 @@
+# initContainers : It will run and execute first and then container will start and excute.
+# In case of initContainers will not stop or break, containers will wait infinte to finish the init job.
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: initpod
+  labels: 
+    env: prod
+    job: start 
+spec: 
+  containers:
+    - name: firstcontainer
+      image: coolgourav147/nginx-custom
+      env:
+        - name: myname
+          value: ArunSingh
+        - name: city
+          value: Basti
+      args: ["sleep", "500"]
+  initContainers:
+    - name: initcontainer
+      image: coolgourav147/nginx-custom
+      env:
+        - name: myname
+          value: ArunSingh
+        - name: city
+          value: Basti
+      args: ["sleep", "30"]
