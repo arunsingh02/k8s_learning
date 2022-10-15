@@ -8,7 +8,7 @@ metadata:
 spec: 
   containers:
     - name: containername
-      image: coolgourav147/nginx-custom
+      image: coolgourav147/nginx-custom:v2
       env:
         - name: myname
           value: ArunSingh

@@ -46,4 +46,22 @@
     >> telnet localhost 8000
     >> ifconfig
     >> Listing the same port
-    >> Within the pod all running containers will share the same shared network.Set the any port and communicate the containers to each other.   
+    >> Within the pod all running containers will share the same shared network.Set the any port and communicate the containers to each other.
+
+13. kubectl expose pod myfirstpod --port=8000 --target-port=80 --name myfirstservice
+    >> --port (cluster port) sending, --target-port (pod/container port) reciever
+    >> All trafic comes to 8000 will redirect to the target port 80.
+    >> This is inside the cluster called cluster IP service
+    >> NAME             TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)          AGE
+    >> myfirstservice   ClusterIP   10.100.199.182   <none>        8000/TCP         44m
+
+14. kubectl expose pod myfirstpod --type=NodePort --port=8000 --target-port=80 --name nodeservice
+    >> This is outside the cluster called node IP service
+    >> nodeservice      NodePort    10.103.18.149    <none>        8000:30437/TCP   13s 
+   
+15. kubectl label pod <pod-name> <env>:<val>
+    kubectl label --override pod <pod-name> <env>:<val>
+    kubectl label pod <pod-name> <env>-
+    >> --all to chnage the existing labels for more than one running pod
+
+ 
