@@ -5,6 +5,7 @@
    >> --dry-run=client  # for test before run the command
    >> create is Imperative object command
    >> run "kubectl edit pod <pod-name>" command and update the opende yaml file to update the resource.
+   >> modify the file and run "kubectl replace -f <yaml-file-name>"
 
 2. kubectl explain pod
    >> Get the reqiured field info
@@ -67,4 +68,14 @@
     >> --all to chnage the existing labels for more than one running pod
 
 16. kubectl describe po/rc/svc 
-    >> To know about the detailed information of the evnet (Namespace, Selector, Events...) 
+    >> To know about the detailed information of the evnet (Namespace, Selector, Events...)
+
+17. kubectl delete --cascade=orphan rc <rc-name>
+    >> --cascade=orphan will only delete the rc but running pods will be in running state only (created by this rc)
+    >> If we create the same rc again, same running pods will comes under rc (controlled by) again (if labels does not changed). Pod count will be the same (not 2 + 2 = 4 pods, only 2 pods with same name -- 'tested')
+
+18. kubectl scale rc --replicas=<total-number-of-replica(int)> <rc-name>
+    >> --replica would be large number or small number.
+    >> rc will check the labels (Selector) and controlled by (owner) while creating the pods. If labels will match and no one owned that pod then only use the running pod, else create the new pod.
+ 
+19. 
