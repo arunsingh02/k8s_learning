@@ -3,15 +3,16 @@ kind: ReplicationController
 metadata: 
   name: firstreplicacontroller
   labels:
-    env: prod
+    proj: voting
 spec: 
   replicas: 2
+  # selector:
+    #  env: prod  -- shouold match with container labels
   template:
     metadata:     
       name: myfirstpod
       labels: 
         env: prod
-        job: start 
     spec: 
       containers:
         - name: containername
@@ -19,6 +20,4 @@ spec:
           env:
             - name: myname
               value: ArunSingh
-            - name: city
-              value: Basti
           args: ["sleep", "5000"]
