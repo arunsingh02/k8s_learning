@@ -78,4 +78,8 @@
     >> --replica would be large number or small number.
     >> rc will check the labels (Selector) and controlled by (owner) while creating the pods. If labels will match and no one owned that pod then only use the running pod, else create the new pod.
  
-19. 
+19. ReplicaSet and ReplicationControllers
+    >> ReplicaSet is the modified version of ReplicationControllers
+    >> ReplicationControllers take bydefault selectors (pods labels)
+    >> Selector is mendatory field of ReplicaSet
+    >> We can use matchLabels or matchExpressions fields in ReplicaSet (rs)

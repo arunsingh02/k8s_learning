@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: ReplicaSet 
+metadata: 
+  name: firstreplicaset
+  labels:
+    proj: voting
+spec: 
+  replicas: 2
+  selector:
+    matchExpressions:
+      - key: app
+        operator: In
+        values:
+          - myapp1
+          - myapp2
+    # matchLabels:
+    #  app: myapp1
+  template:
+    metadata:     
+      name: pod_rs
+      labels: 
+        app: myapp1
+    spec: 
+      containers:
+        - name: firstcontainer
+          image: coolgourav147/nginx-custom:v2
+          env:
+            - name: myname
+              value: ArunSingh
+          args: ["sleep", "5000"]

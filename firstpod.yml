@@ -4,7 +4,7 @@ metadata:
   name: myfirstpod
   labels: 
     env: prod
-    job: start 
+    app: myapp1 
 spec: 
   containers:
     - name: containername
